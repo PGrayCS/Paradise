@@ -1,4 +1,6 @@
 #define FIRE_ALARM_SOUND_COOLDOWN 5 SECONDS // Adjust cooldown as needed
+#define FIRE_ALARM_MAX_VOLUME 75
+#define FIRE_ALARM_MIN_VOLUME 5
 
 /mob/living/Initialize(mapload)
 	. = ..()
@@ -1226,15 +1228,32 @@
 	return
 
 var/next_fire_alert_sound = 0
-
+var/fire_sound_fadeout = FALSE
+var/fire_sound_volume = FIRE_ALARM_MAX_VOLUME
 
 /mob/living/update_fire()
 	if(on_fire)
 		if(world.time > next_fire_alert_sound)
-			playsound(src, 'sound/machines/fire_alarm.ogg', 75, 0)
+			// Reset volume and pick a random variation
+			fire_sound_volume = FIRE_ALARM_MAX_VOLUME
+			var/sound_variation = rand(1,3)
+			var/sound_file = 'sound/machines/fire_alarm[sound_variation].ogg'
+
+			playsound(src, sound_file, fire_sound_volume, FALSE)
 			next_fire_alert_sound = world.time + FIRE_ALARM_SOUND_COOLDOWN
+			fire_sound_fadeout = TRUE
+
+			// Visual feedback
+			if(client)
+				to_chat(src, "<span class='warning'>The fire alarm blares!</span>")
+
+		else if(fire_sound_fadeout && fire_sound_volume > FIRE_ALARM_MIN_VOLUME)
+			fire_sound_volume = max(FIRE_ALARM_MIN_VOLUME, fire_sound_volume - 5)
+			playsound(src, 'sound/machines/fire_alarm.ogg', fire_sound_volume, FALSE)
 	else
 		clear_alert("fire")
+		fire_sound_fadeout = FALSE
+		fire_sound_volume = FIRE_ALARM_MAX_VOLUME
 
 /mob/living/update_stat(text)
 	if(fire_alert && !stat)

@@ -11,8 +11,11 @@
 #define SPAM_TRIGGER_WARNING 5
 #define SPAM_TRIGGER_AUTOMUTE 10
 
-// Time between fire alarm sounds in seconds
+// Fire alarm settings
 #define FIRE_ALARM_SOUND_COOLDOWN (3 SECONDS)
+#define FIRE_ALARM_SOUND_FADEOUT (0.5 SECONDS) 
+#define FIRE_ALARM_MAX_VOLUME 75
+#define FIRE_ALARM_MIN_VOLUME 30
 
 //Some constants for DB_Ban
 #define BANTYPE_PERMA		1
