@@ -10,6 +10,7 @@
 //Number of identical messages required to get the spam-prevention automute thing to trigger warnings and automutes
 #define SPAM_TRIGGER_WARNING 5
 #define SPAM_TRIGGER_AUTOMUTE 10
+#define FIRE_ALARM_SOUND_COOLDOWN (3 SECONDS)
 
 //Some constants for DB_Ban
 #define BANTYPE_PERMA		1

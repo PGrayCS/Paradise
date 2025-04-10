@@ -1,3 +1,5 @@
+#define FIRE_ALARM_SOUND_COOLDOWN 5 SECONDS // Adjust cooldown as needed
+
 /mob/living/Initialize(mapload)
 	. = ..()
 	var/datum/atom_hud/data/human/medical/advanced/medhud = GLOB.huds[DATA_HUD_MEDICAL_ADVANCED]
@@ -1222,3 +1224,30 @@
 
 /mob/living/proc/sec_hud_set_ID()
 	return
+
+var/next_fire_alert_sound = 0
+
+
+/mob/living/update_fire()
+	if(on_fire)
+		if(world.time > next_fire_alert_sound)
+			playsound(src, 'sound/machines/fire_alarm.ogg', 75, 0)
+			next_fire_alert_sound = world.time + FIRE_ALARM_SOUND_COOLDOWN
+	else
+		clear_alert("fire")
+
+/mob/living/update_stat(text)
+	if(fire_alert && !stat)
+		switch(fire_alert)
+			if(FIRE_ALERT_NONE)
+				clear_alert("fire")
+			if(FIRE_ALERT_COLD)
+				throw_alert("fire", /obj/screen/alert/cold)
+				if(world.time > next_fire_alert_sound)
+					playsound(src, 'sound/machines/fire_alarm.ogg', 75, 0)
+					next_fire_alert_sound = world.time + FIRE_ALARM_SOUND_COOLDOWN
+			if(FIRE_ALERT_HOT)
+				throw_alert("fire", /obj/screen/alert/fire)
+				if(world.time > next_fire_alert_sound)
+					playsound(src, 'sound/machines/fire_alarm.ogg', 75, 0)
+					next_fire_alert_sound = world.time + FIRE_ALARM_SOUND_COOLDOWN

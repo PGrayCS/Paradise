@@ -119,3 +119,6 @@
 	var/last_taste_text
 	///If a creature gets to be super special and have extra range on their chat messages
 	var/extra_message_range = 0
+
+	var/fire_alert = FIRE_ALERT_NONE	//If you have a current fire alert
+	var/next_fire_alert_sound = 0 //Next time we can play the fire alarm sound
