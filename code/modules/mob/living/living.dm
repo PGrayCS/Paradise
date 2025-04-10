@@ -1245,7 +1245,7 @@ var/fire_sound_volume = FIRE_ALARM_MAX_VOLUME
 
 			// Visual feedback
 			if(client)
-				to_chat(src, "<span class='warning'>The fire alarm blares!</span>")
+				to_chat(src, "<span class='warning'>The fire alarm blares loudly!</span>")
 
 		else if(fire_sound_fadeout && fire_sound_volume > FIRE_ALARM_MIN_VOLUME)
 			fire_sound_volume = max(FIRE_ALARM_MIN_VOLUME, fire_sound_volume - 5)
