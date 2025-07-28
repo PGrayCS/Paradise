@@ -79,12 +79,15 @@
 
 	//Books that we don't want showing up in the programmatic book list
 	//Books should go here if they're non-functional, spawners, or are designed for off-station roles to consume
-	var/list/forbidden_books = list(
-		/obj/item/book/manual/random,
-		/obj/item/book/manual/nuclear,
-		/obj/item/book/manual/wiki,
-		/obj/item/book/manual/hydroponics_pod_people,
-	)
+        var/list/forbidden_books = list(
+                /obj/item/book/manual/random,
+                /obj/item/book/manual/nuclear,
+                /obj/item/book/manual/wiki,
+                /obj/item/book/manual/hydroponics_pod_people,
+                /obj/item/book/manual/wiki/sop_legal,
+                /obj/item/book/manual/wiki/security_space_law,
+                /obj/item/book/manual/wiki/security_space_law/black,
+        )
 
 	var/newid = 1
 	//building a list of all programmatic books
