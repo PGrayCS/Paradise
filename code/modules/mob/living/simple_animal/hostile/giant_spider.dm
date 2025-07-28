@@ -17,7 +17,6 @@
 	butcher_results = list(/obj/item/food/monstermeat/spidermeat = 2, /obj/item/food/monstermeat/spiderleg = 8)
 	response_help  = "pets"
 	response_disarm = "gently pushes aside"
-	response_harm   = "hits"
 	maxHealth = 200
 	health = 200
 	obj_damage = 60
@@ -32,6 +31,8 @@
 	attack_sound = 'sound/weapons/bite.ogg'
 	gold_core_spawnable = HOSTILE_SPAWN
 	var/venom_per_bite = 0 // While the /poison/ type path remains as-is for consistency reasons, we're really talking about venom, not poison.
+	contains_xeno_organ = TRUE
+	surgery_container = /datum/xenobiology_surgery_container/spider
 
 /mob/living/simple_animal/hostile/poison/giant_spider/Initialize(mapload)
 	. = ..()
@@ -99,7 +100,6 @@
 	maxHealth = 120
 	health = 120
 	melee_damage_lower = 10
-	melee_damage_upper = 20
 	venom_per_bite = 10
 	move_to_delay = 5
 

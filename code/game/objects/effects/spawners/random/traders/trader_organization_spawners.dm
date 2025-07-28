@@ -10,7 +10,8 @@
 		/obj/item/storage/belt/federation_webbing = 5,
 		/obj/item/clothing/under/solgov = 5,
 		/obj/item/mod/module/dispenser = 5,
-		/obj/item/flag/solgov = 3
+		/obj/item/flag/solgov = 3,
+		/obj/item/clothing/mask/holo_cigar = 5
 	)
 
 /obj/effect/spawner/random/traders/federation_major
@@ -24,7 +25,7 @@
 		/obj/item/weaponcrafting/gunkit/universal_gun_kit/sol_gov = 5,
 		/obj/item/storage/fancy/shell/buck = 3, //Only seven shots, make them count
 		/obj/item/mod/module/noslip = 4,
-		/obj/item/clothing/mask/holo_cigar = 5
+		/obj/item/storage/box/marine_armor_export = 3 //Export-grade armor, it's a bit worse than the normal version.
 	)
 
 /obj/effect/spawner/random/traders/cybersun_minor
@@ -305,7 +306,6 @@
 
 /obj/effect/spawner/random/traders/merchantguild_major
 	name = "12. merchant guild large gear"
-	spawn_loot_count = 6 //Low-risk items, flavorful knick knacks - higher stock
 	loot = list(
 		/obj/item/clothing/suit/pimpcoat = 5,
 		/obj/item/dualsaber/toy = 5,

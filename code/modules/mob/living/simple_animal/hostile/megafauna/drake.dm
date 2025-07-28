@@ -62,6 +62,10 @@ Difficulty: Medium
 	death_sound = 'sound/misc/demon_dies.ogg'
 	footstep_type = FOOTSTEP_MOB_HEAVY
 	enraged_loot = /obj/item/disk/fauna_research/ash_drake
+	contains_xeno_organ = TRUE
+	ignore_generic_organs = TRUE
+	surgery_container = /datum/xenobiology_surgery_container/drake
+
 	attack_action_types = list(/datum/action/innate/megafauna_attack/fire_cone,
 							/datum/action/innate/megafauna_attack/fire_cone_meteors,
 							/datum/action/innate/megafauna_attack/mass_fire,
@@ -99,7 +103,13 @@ Difficulty: Medium
 	icon_state = null
 	gpstag = "Fiery Signal"
 	desc = "Here there be dragons."
-	invisibility = 100
+
+/mob/living/simple_animal/hostile/megafauna/dragon/death(gibbed)
+	move_force = MOVE_FORCE_OVERPOWERING
+	move_resist = MOVE_FORCE_OVERPOWERING
+	pull_force = MOVE_FORCE_OVERPOWERING
+	mob_size = MOB_SIZE_LARGE
+	return ..()
 
 /mob/living/simple_animal/hostile/megafauna/dragon/OpenFire()
 	if(swooping)
@@ -476,8 +486,6 @@ Difficulty: Medium
 	name = "Fire Barrier"
 	icon = 'icons/effects/fire.dmi'
 	icon_state = "1"
-	anchored = TRUE
-	opacity = FALSE
 	density = TRUE
 	duration = 82
 	color = COLOR_DARK_ORANGE
@@ -501,14 +509,12 @@ Difficulty: Medium
 	pixel_x = -32
 	pixel_y = -32
 	color = "#FF0000"
-	duration = 10
 
 /obj/effect/temp_visual/dragon_flight
 	icon = 'icons/mob/lavaland/96x96megafauna.dmi'
 	icon_state = "dragon"
 	layer = ABOVE_ALL_MOB_LAYER
 	pixel_x = -32
-	duration = 10
 	randomdir = FALSE
 
 /obj/effect/temp_visual/dragon_flight/Initialize(mapload, negative)
@@ -530,7 +536,6 @@ Difficulty: Medium
 /obj/effect/temp_visual/dragon_flight/end
 	pixel_x = DRAKE_SWOOP_HEIGHT
 	pixel_z = DRAKE_SWOOP_HEIGHT
-	duration = 10
 
 /obj/effect/temp_visual/dragon_flight/end/flight(negative)
 	if(negative)
@@ -598,11 +603,11 @@ Difficulty: Medium
 	obj_damage = 80
 	melee_damage_upper = 30
 	melee_damage_lower = 30
-	mouse_opacity = MOUSE_OPACITY_ICON
 	damage_coeff = list(BRUTE = 1, BURN = 1, TOX = 1, CLONE = 1, STAMINA = 0, OXY = 1)
 	crusher_loot = list()
 	butcher_results = list(/obj/item/stack/ore/diamond = 5, /obj/item/stack/sheet/sinew = 5, /obj/item/stack/sheet/bone = 30)
 	attack_action_types = list()
+	contains_xeno_organ = FALSE
 
 /mob/living/simple_animal/hostile/megafauna/dragon/lesser/generate_random_loot()
 	return
@@ -622,7 +627,6 @@ Difficulty: Medium
 	melee_damage_upper = 35
 	melee_damage_lower = 35
 	speed = 0
-	mouse_opacity = MOUSE_OPACITY_ICON
 	move_to_delay = 3
 	rapid = 2
 	crusher_loot = list()
@@ -666,7 +670,6 @@ Difficulty: Medium
 	sound = 'sound/magic/tail_swing.ogg'
 	base_cooldown = 150
 	clothes_req = FALSE
-	cooldown_min = 150
 	invocation_type = "none"
 	sparkle_path = /obj/effect/temp_visual/dir_setting/tailsweep
 	action_icon_state = "tailsweep"
@@ -687,7 +690,6 @@ Difficulty: Medium
 	icon_state = null
 	gpstag = "Corrupted Signal"
 	desc = "Fish and chips."
-	invisibility = 100
 
 #undef DRAKE_SWOOP_HEIGHT
 #undef DRAKE_SWOOP_DIRECTION_CHANGE_RANGE

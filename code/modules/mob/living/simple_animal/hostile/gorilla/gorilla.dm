@@ -24,7 +24,6 @@
 	faction = list("hostile", "monkey", "jungle")
 	robust_searching = TRUE
 	minbodytemp = 270
-	maxbodytemp = 350
 	footstep_type = FOOTSTEP_MOB_BAREFOOT
 	stat_attack = UNCONSCIOUS // Sleeping won't save you
 	a_intent = INTENT_HARM // Angrilla
@@ -118,7 +117,8 @@
 			movable_target.forceMove(src)
 			return COMPONENT_CANCEL_ATTACK_CHAIN
 
-		if(isturf(target) && !is_blocked_turf(target) && LAZYLEN(crates_in_hand))
+		var/turf/target_turf = target
+		if(istype(target_turf) && !target_turf.is_blocked_turf() && LAZYLEN(crates_in_hand))
 			drop_random_crate(target)
 			return COMPONENT_CANCEL_ATTACK_CHAIN
 
@@ -146,6 +146,9 @@
 
 /mob/living/simple_animal/hostile/gorilla/update_icon_state()
 	. = ..()
+	if(is_dead())
+		icon_state = icon_dead
+		return
 	if(is_bipedal || LAZYLEN(crates_in_hand))
 		icon_state = "standing"
 		return
@@ -215,7 +218,6 @@
 	icon = 'icons/mob/cargorillia.dmi'
 	desc = "Cargo's pet gorilla. He seems to have an 'I love Mom' tattoo."
 	faction = list("neutral", "monkey", "jungle")
-	gold_core_spawnable = NO_SPAWN
 	gender = MALE
 	a_intent = INTENT_HELP
 	unique_pet = TRUE

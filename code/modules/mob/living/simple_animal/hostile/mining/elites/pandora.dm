@@ -37,10 +37,12 @@
 	ranged_cooldown_time = 20
 	speed = 2
 	move_to_delay = 10
-	mouse_opacity = MOUSE_OPACITY_ICON
 	death_sound = 'sound/magic/repulse.ogg'
 	deathmessage = "'s lights flicker, before its top part falls down."
 	loot_drop = /obj/item/clothing/accessory/pandora_hope
+	contains_xeno_organ = TRUE
+	ignore_generic_organs = TRUE
+	surgery_container = /datum/xenobiology_surgery_container/pandora
 
 	attack_action_types = list(/datum/action/innate/elite_attack/chaser_burst,
 								/datum/action/innate/elite_attack/magic_box,
@@ -207,7 +209,6 @@
 	icon_state = "hope"
 	item_state = "hope"
 	item_color = "hope"
-	slot_flags = ITEM_SLOT_ACCESSORY
 	allow_duplicates = FALSE
 	resistance_flags = FIRE_PROOF
 
