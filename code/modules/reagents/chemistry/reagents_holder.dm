@@ -461,9 +461,9 @@
 	if(flags & REAGENT_NOREACT)
 		return //Yup, no reactions here. No siree.
 
-	var/reaction_occured = FALSE
+    var/reaction_occurred = FALSE
 	do
-		reaction_occured = FALSE
+        reaction_occurred = FALSE
 		for(var/A in reagent_list) // Usually a small list
 			var/datum/reagent/R = A
 			for(var/reaction in GLOB.chemical_reactions_list[R.id]) // Was a big list but now it should be smaller since we filtered it with our reagent id
@@ -548,10 +548,10 @@
 						playsound(get_turf(my_atom), C.mix_sound, 80, TRUE)
 
 					C.on_reaction(src, created_volume)
-					reaction_occured = TRUE
+                    reaction_occurred = TRUE
 					break
 
-	while(reaction_occured)
+    while(reaction_occurred)
 	update_total()
 	return FALSE
 

@@ -243,7 +243,7 @@
 	if(!newloc || newloc == loc)
 		return
 
-	// A mid-movement... movement... occured, resolve that first.
+    // A mid-movement... movement... occurred, resolve that first.
 	RESOLVE_ACTIVE_MOVEMENT
 
 	if(!direction)

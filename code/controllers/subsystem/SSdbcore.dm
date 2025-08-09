@@ -17,7 +17,7 @@ SUBSYSTEM_DEF(dbcore)
 	/// List of currenty processing queries
 	var/list/active_queries = list()
 
-	/// SQL errors that have occured mid round
+    /// SQL errors that have occurred mid round
 	var/total_errors = 0
 
 	/// Connection handle. This is an arbitrary handle returned from rust_g.
