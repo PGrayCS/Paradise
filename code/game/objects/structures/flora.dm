@@ -315,7 +315,7 @@
 		H.set_alpha_tracking(ALPHA_VISIBLE, src)
 	QDEL_NULL(mob_overlay)
 
-/// Icon operation has occured, time to make sure we're showing a plant again if we need to be.
+/// Icon operation has occurred, time to make sure we're showing a plant again if we need to be.
 /obj/item/kirbyplants/proc/reapply_hide(mob/living/carbon/user)
 	SIGNAL_HANDLER
 	// Reset the state of the user

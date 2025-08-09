@@ -558,7 +558,7 @@ What are the archived variables for?
 	///Performs various reactions such as combustion or fusion (LOL)
 	///Returns: TRUE if any reaction took place; FALSE otherwise
 /datum/gas_mixture/proc/react(atom/dump_location)
-	var/reacting = FALSE //set to TRUE if a notable reaction occured (used by pipe_network)
+    var/reacting = FALSE //set to TRUE if a notable reaction occurred (used by pipe_network)
 
 	if((private_agent_b > MINIMUM_MOLE_COUNT) && private_temperature > AGENT_B_CONVERSION_MIN_TEMP)
 		if(private_toxins > MINIMUM_HEAT_CAPACITY && private_carbon_dioxide > MINIMUM_HEAT_CAPACITY)

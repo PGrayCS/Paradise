@@ -154,7 +154,7 @@
 			))
 
 			if(!query.warn_execute())
-				to_chat(usr, "Well, this is embarassing. We tried to save your ToS withdrawal but the DB failed. Please contact the server host")
+                to_chat(usr, "Well, this is embarrassing. We tried to save your ToS withdrawal but the DB failed. Please contact the server host")
 				return
 
 			// I know its a very rare occurance, but I wouldnt doubt people using this to withdraw consent right when sec captures them
